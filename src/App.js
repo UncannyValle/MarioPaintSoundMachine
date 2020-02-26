@@ -1,20 +1,30 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import "./App.css";
 import Button from "./components/Button";
 
 //Songs
 import monkeySong from "./music/Monkey-Song.mp3";
 import marioSong from "./music/Mario-Paint.mp3";
-import flyswatter from "./music/Flyswatter.mp3"
+import flyswatter from "./music/Flyswatter.mp3";
 
 function App() {
   const [sound, setSound] = useState("");
+
   //what happens when you click a button or press key
   function playBeat(beat) {
-    let song = document.getElementById("song-" + beat);
-    song.pause();
-    setSound(beat);
+    let song = document.getElementById(beat);
+    // let prevSong = document.get
     song.play();
+    setSound(beat);
+    // let oldSong = song;
+  }
+  function pauseBeat() {
+    let song = document.getElementById(sound);
+    if (song === null) {
+      console.log("cool");
+    } else {
+      song.pause();
+    }
   }
   //Updates state to the correct button
 
@@ -26,32 +36,86 @@ function App() {
     <div className="App" id="drum-machine">
       <h1 id="display">{sound}</h1>
       <div id="buttons">
-        <Button hash="button-Q" clickHandler={() => playBeat("Q")}>
-          Q<audio id="song-Q" src={monkeySong} autoPlay></audio>
+        <Button
+          hash="button-Q"
+          clickHandler={() => {
+            pauseBeat();
+            playBeat("Q");
+          }}
+        >
+          Q<audio className="clip" id="Q" src={monkeySong}></audio>
         </Button>
-        <Button hash="button-W" clickHandler={() => playBeat("W")}>
-          W<audio id="song-W" src={marioSong} autoPlay></audio>
+        <Button
+          hash="button-W"
+          clickHandler={() => {
+            pauseBeat();
+            playBeat("W");
+          }}
+        >
+          W<audio className="clip" id="W" src={marioSong}></audio>
         </Button>
-        <Button hash="button-E" clickHandler={() => playBeat("E")}>
-          E<audio id="song-E" src={flyswatter} autoPlay></audio>
+        <Button
+          hash="button-E"
+          clickHandler={() => {
+            pauseBeat();
+            playBeat("E");
+          }}
+        >
+          E<audio className="clip" id="E" src={flyswatter}></audio>
         </Button>
-        <Button hash="button-A" clickHandler={() => playBeat("A")}>
-          A<audio id="song-A" src={marioSong} autoPlay></audio>
+        <Button
+          hash="button-A"
+          clickHandler={() => {
+            pauseBeat();
+            playBeat("A");
+          }}
+        >
+          A<audio className="clip" id="A" src={marioSong}></audio>
         </Button>
-        <Button hash="button-S" clickHandler={() => playBeat("S")}>
-          S<audio id="song-S" src={marioSong} autoPlay></audio>
+        <Button
+          hash="button-S"
+          clickHandler={() => {
+            pauseBeat();
+            playBeat("S");
+          }}
+        >
+          S<audio className="clip" id="S" src={marioSong}></audio>
         </Button>
-        <Button hash="button-D" clickHandler={() => playBeat("D")}>
-          D<audio id="song-D" src={marioSong} autoPlay></audio>
+        <Button
+          hash="button-D"
+          clickHandler={() => {
+            pauseBeat();
+            playBeat("D");
+          }}
+        >
+          D<audio className="clip" id="D" src={marioSong}></audio>
         </Button>
-        <Button hash="button-Z" clickHandler={() => playBeat("Z")}>
-          Z<audio id="song-Z" src={marioSong} autoPlay></audio>
+        <Button
+          hash="button-Z"
+          clickHandler={() => {
+            pauseBeat();
+            playBeat("Z");
+          }}
+        >
+          Z<audio className="clip" id="Z" src={marioSong}></audio>
         </Button>
-        <Button hash="button-X" clickHandler={() => playBeat("X")}>
-          X<audio id="song-X" src={marioSong} autoPlay></audio>
+        <Button
+          hash="button-X"
+          clickHandler={() => {
+            pauseBeat();
+            playBeat("X");
+          }}
+        >
+          X<audio className="clip" id="X" src={marioSong}></audio>
         </Button>
-        <Button hash="button-C" clickHandler={() => playBeat("C")}>
-          C<audio id="song-C" src={marioSong} autoPlay></audio>
+        <Button
+          hash="button-C"
+          clickHandler={() => {
+            pauseBeat();
+            playBeat("C");
+          }}
+        >
+          C<audio className="clip" id="C" src={marioSong}></audio>
         </Button>
       </div>
     </div>
