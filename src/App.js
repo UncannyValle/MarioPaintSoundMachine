@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Button from "./components/Button";
 
@@ -6,18 +6,24 @@ import Button from "./components/Button";
 import monkeySong from "./music/Monkey-Song.mp3";
 import marioSong from "./music/Mario-Paint.mp3";
 import flyswatter from "./music/Flyswatter.mp3";
+import creative from "./music/creative-exercise.mp3"
+import robot from "./music/Data-Robot.mp3"
+import stamps from "./music/Special-Stamps.mp3"
+import mysterious from "./music/Mysterious.mp3"
+import bug from "./music/Big Robo Bug.mp3"
+import paintbrush from "./music/Rainbow Paintbrush.mp3"
 
 function App() {
   const [sound, setSound] = useState("");
 
-  //what happens when you click a button or press key
+  //what happens when you click a button
   function playBeat(beat) {
     let song = document.getElementById(beat);
-    // let prevSong = document.get
     song.play();
     setSound(beat);
-    // let oldSong = song;
   }
+
+  // pause the music
   function pauseBeat() {
     let song = document.getElementById(sound);
     if (song === null) {
@@ -26,6 +32,25 @@ function App() {
       song.pause();
     }
   }
+
+  window.addEventListener("keyup", e => {
+    if (
+      e.key === "q" ||
+      e.key === "w" ||
+      e.key === "e" ||
+      e.key === "a" ||
+      e.key === "s" ||
+      e.key === "d" ||
+      e.key === "z" ||
+      e.key === "x" ||
+      e.key === "c"
+    ) {
+      setSound(e.key.toUpperCase());
+      pauseBeat();
+      let song = document.getElementById(e.key.toUpperCase());
+      song.play();
+    }
+  });
   //Updates state to the correct button
 
   //updates display
@@ -70,7 +95,7 @@ function App() {
             playBeat("A");
           }}
         >
-          A<audio className="clip" id="A" src={marioSong}></audio>
+          A<audio className="clip" id="A" src={creative}></audio>
         </Button>
         <Button
           hash="button-S"
@@ -79,7 +104,7 @@ function App() {
             playBeat("S");
           }}
         >
-          S<audio className="clip" id="S" src={marioSong}></audio>
+          S<audio className="clip" id="S" src={robot}></audio>
         </Button>
         <Button
           hash="button-D"
@@ -88,7 +113,7 @@ function App() {
             playBeat("D");
           }}
         >
-          D<audio className="clip" id="D" src={marioSong}></audio>
+          D<audio className="clip" id="D" src={stamps}></audio>
         </Button>
         <Button
           hash="button-Z"
@@ -97,7 +122,7 @@ function App() {
             playBeat("Z");
           }}
         >
-          Z<audio className="clip" id="Z" src={marioSong}></audio>
+          Z<audio className="clip" id="Z" src={mysterious}></audio>
         </Button>
         <Button
           hash="button-X"
@@ -106,7 +131,7 @@ function App() {
             playBeat("X");
           }}
         >
-          X<audio className="clip" id="X" src={marioSong}></audio>
+          X<audio className="clip" id="X" src={bug}></audio>
         </Button>
         <Button
           hash="button-C"
@@ -115,7 +140,7 @@ function App() {
             playBeat("C");
           }}
         >
-          C<audio className="clip" id="C" src={marioSong}></audio>
+          C<audio className="clip" id="C" src={paintbrush}></audio>
         </Button>
       </div>
     </div>
