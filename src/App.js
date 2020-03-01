@@ -14,7 +14,7 @@ import bug from "./music/Big Robo Bug.mp3"
 import paintbrush from "./music/Rainbow Paintbrush.mp3"
 
 function App() {
-  const [sound, setSound] = useState("");
+  const [sound, setSound] = useState("*");
 
   //what happens when you click a button
   function playBeat(beat) {
@@ -33,7 +33,7 @@ function App() {
     }
   }
 
-  window.addEventListener("keyup", e => {
+  window.addEventListener("keydown", e => {
     if (
       e.key === "q" ||
       e.key === "w" ||
@@ -60,6 +60,7 @@ function App() {
   return (
     <div className="App" id="drum-machine">
       <h1 id="display">{sound}</h1>
+      <p> Press the buttons bellow or corresponding keys</p>
       <div id="buttons">
         <Button
           hash="button-Q"
