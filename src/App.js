@@ -6,16 +6,29 @@ import Button from "./components/Button";
 import monkeySong from "./music/Monkey-Song.mp3";
 import marioSong from "./music/Mario-Paint.mp3";
 import flyswatter from "./music/Flyswatter.mp3";
-import creative from "./music/creative-exercise.mp3"
-import robot from "./music/Data-Robot.mp3"
-import stamps from "./music/Special-Stamps.mp3"
-import mysterious from "./music/Mysterious.mp3"
-import bug from "./music/Big Robo Bug.mp3"
-import paintbrush from "./music/Rainbow Paintbrush.mp3"
+import creative from "./music/creative-exercise.mp3";
+import robot from "./music/Data-Robot.mp3";
+import stamps from "./music/Special-Stamps.mp3";
+import mysterious from "./music/Mysterious.mp3";
+import bug from "./music/Big Robo Bug.mp3";
+import paintbrush from "./music/Rainbow Paintbrush.mp3";
 
+//Images
+import mushroom from "./images/mushroom.png";
+import star from "./images/star.png";
+import life from "./images/1up.png";
+import flower from "./images/flower.png";
+import bomb from "./images/bomb.png";
+import koopa from "./images/koopa.png";
+import goomba from "./images/goomba.png";
+import shy from "./images/shy.png";
+import mario from "./images/mario.png";
+import gameboy from "./images/gameboy.jpg";
+
+//Main App
 function App() {
-  const [sound, setSound] = useState("*");
-
+  const [sound, setSound] = useState("");
+  const [image, setImage] = useState(mario);
   //what happens when you click a button
   function playBeat(beat) {
     let song = document.getElementById(beat);
@@ -33,7 +46,7 @@ function App() {
     }
   }
 
-  window.addEventListener("keydown", e => {
+  window.addEventListener("keydown", (e) => {
     if (
       e.key === "q" ||
       e.key === "w" ||
@@ -45,7 +58,6 @@ function App() {
       e.key === "x" ||
       e.key === "c"
     ) {
-      setSound(e.key.toUpperCase());
       pauseBeat();
       let song = document.getElementById(e.key.toUpperCase());
       song.play();
@@ -54,95 +66,110 @@ function App() {
   //Updates state to the correct button
 
   //updates display
-
+    const updateDisplay = () => {
+      if(sound === "q") setSound(mushroom)
+    }
   //plays the sound
 
   return (
-    <div className="App" id="drum-machine">
-      <h1 id="display">{sound}</h1>
-      <p> Press the buttons bellow or corresponding keys</p>
-      <div id="buttons">
-        <Button
-          hash="button-Q"
-          clickHandler={() => {
-            pauseBeat();
-            playBeat("Q");
-          }}
-        >
-          Q<audio className="clip" id="Q" src={monkeySong}></audio>
-        </Button>
-        <Button
-          hash="button-W"
-          clickHandler={() => {
-            pauseBeat();
-            playBeat("W");
-          }}
-        >
-          W<audio className="clip" id="W" src={marioSong}></audio>
-        </Button>
-        <Button
-          hash="button-E"
-          clickHandler={() => {
-            pauseBeat();
-            playBeat("E");
-          }}
-        >
-          E<audio className="clip" id="E" src={flyswatter}></audio>
-        </Button>
-        <Button
-          hash="button-A"
-          clickHandler={() => {
-            pauseBeat();
-            playBeat("A");
-          }}
-        >
-          A<audio className="clip" id="A" src={creative}></audio>
-        </Button>
-        <Button
-          hash="button-S"
-          clickHandler={() => {
-            pauseBeat();
-            playBeat("S");
-          }}
-        >
-          S<audio className="clip" id="S" src={robot}></audio>
-        </Button>
-        <Button
-          hash="button-D"
-          clickHandler={() => {
-            pauseBeat();
-            playBeat("D");
-          }}
-        >
-          D<audio className="clip" id="D" src={stamps}></audio>
-        </Button>
-        <Button
-          hash="button-Z"
-          clickHandler={() => {
-            pauseBeat();
-            playBeat("Z");
-          }}
-        >
-          Z<audio className="clip" id="Z" src={mysterious}></audio>
-        </Button>
-        <Button
-          hash="button-X"
-          clickHandler={() => {
-            pauseBeat();
-            playBeat("X");
-          }}
-        >
-          X<audio className="clip" id="X" src={bug}></audio>
-        </Button>
-        <Button
-          hash="button-C"
-          clickHandler={() => {
-            pauseBeat();
-            playBeat("C");
-          }}
-        >
-          C<audio className="clip" id="C" src={paintbrush}></audio>
-        </Button>
+    <div className="app" id="drum-machine">
+     
+      <h2> Press the buttons bellow or corresponding keys</h2>
+      <div className="game">
+        <img src={gameboy} alt="gameboy" id="gameboy" />
+        <img id="display" src={sound} alt={sound}></img>
+        <div id="buttons">
+          <Button
+            hash="button-Q"
+            clickHandler={() => {
+              pauseBeat();
+              playBeat("Q");
+            }}
+          >
+            <img className="image" src={mushroom} alt="mushroom" />Q
+            <audio className="clip" id="Q" src={monkeySong}></audio>
+          </Button>
+          <Button
+            hash="button-W"
+            clickHandler={() => {
+              pauseBeat();
+              playBeat("W");
+            }}
+          >
+            <img className="image" src={star} alt="star" />W
+            <audio className="clip" id="W" src={marioSong}></audio>
+          </Button>
+          <Button
+            hash="button-E"
+            clickHandler={() => {
+              pauseBeat();
+              playBeat("E");
+            }}
+          >
+            <img className="image" src={flower} alt="flower" />E
+            <audio className="clip" id="E" src={flyswatter}></audio>
+          </Button>
+          <Button
+            hash="button-A"
+            clickHandler={() => {
+              pauseBeat();
+              playBeat("A");
+            }}
+          >
+            <img className="image" src={life} alt="life" />A
+            <audio className="clip" id="A" src={creative}></audio>
+          </Button>
+          <Button
+            hash="button-S"
+            clickHandler={() => {
+              pauseBeat();
+              playBeat("S");
+            }}
+          >
+            <img className="image" src={mario} alt="Mario" /> S
+            <audio className="clip" id="S" src={robot}></audio>
+          </Button>
+          <Button
+            hash="button-D"
+            clickHandler={() => {
+              pauseBeat();
+              playBeat("D");
+            }}
+          >
+            <img className="image" src={bomb} alt="bomb" /> D
+            <audio className="clip" id="D" src={stamps}></audio>
+          </Button>
+          <Button
+            hash="button-Z"
+            clickHandler={() => {
+              pauseBeat();
+              playBeat("Z");
+            }}
+          >
+            <img className="image" src={goomba} alt="goomba" />Z
+            <audio className="clip" id="Z" src={mysterious}></audio>
+          </Button>
+          <Button
+            hash="button-X"
+            clickHandler={() => {
+              pauseBeat();
+              playBeat("X");
+            }}
+          >
+            <img className="image" src={koopa} alt="koopa" />X
+            <audio className="clip" id="X" src={bug}></audio>
+          </Button>
+          <Button
+            hash="button-C"
+            clickHandler={() => {
+              pauseBeat();
+              playBeat("C");
+            }}
+          >
+            <img className="image" src={shy} alt="shy" />C
+            <audio className="clip" id="C" src={paintbrush}></audio>
+          </Button>{" "}
+        </div>
       </div>
     </div>
   );
