@@ -27,13 +27,14 @@ import gameboy from "./images/gameboy.jpg";
 
 //Main App
 function App() {
-  const [sound, setSound] = useState("");
+  const [sound, setSound] = useState("*");
   const [image, setImage] = useState(mario);
   //what happens when you click a button
   function playBeat(beat) {
-    let song = document.getElementById(beat);
+    let song = document.getElementById(beat.toUpperCase());
     song.play();
-    setSound(beat);
+    setSound(beat.toUpperCase());
+    updateDisplay(beat.toLowerCase());
   }
 
   // pause the music
@@ -59,25 +60,56 @@ function App() {
       e.key === "c"
     ) {
       pauseBeat();
-      let song = document.getElementById(e.key.toUpperCase());
-      song.play();
+      playBeat(e.key);
+      // updateDisplay(e);
     }
   });
   //Updates state to the correct button
 
   //updates display
-    const updateDisplay = () => {
-      if(sound === "q") setSound(mushroom)
+  const updateDisplay = (button) => {
+    // if (button === "q") setImage(mushroom);
+    // if (button === "w") setImage(star);
+    switch (button) {
+      case "q":
+        setImage(mushroom);
+        break;
+      case "w":
+        setImage(star);
+        break;
+      case "e":
+        setImage(flower);
+        break;
+      case "a":
+        setImage(life);
+        break;
+      case "s":
+        setImage(mario);
+        break;
+      case "d":
+        setImage(bomb);
+        break;
+      case "z":
+        setImage(goomba);
+        break;
+      case "x":
+        setImage(koopa);
+        break;
+      case "c":
+        setImage(shy);
+        break;
+      default:
     }
+  };
   //plays the sound
 
   return (
     <div className="app" id="drum-machine">
-     
-      <h2> Press the buttons bellow or corresponding keys</h2>
+      <h1>MARIO SOUND MAKER</h1>
+      <h2> Press the buttons bellow or corresponding keys to play a sound</h2>
       <div className="game">
         <img src={gameboy} alt="gameboy" id="gameboy" />
-        <img id="display" src={sound} alt={sound}></img>
+        <img id="display" src={image} alt={sound}></img>
         <div id="buttons">
           <Button
             hash="button-Q"
