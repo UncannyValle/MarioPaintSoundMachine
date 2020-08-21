@@ -41,7 +41,6 @@ function App() {
   function pauseBeat() {
     let song = document.getElementById(sound);
     if (song === null) {
-      console.log("cool");
     } else {
       song.pause();
     }
