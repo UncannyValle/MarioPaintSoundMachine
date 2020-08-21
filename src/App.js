@@ -23,7 +23,7 @@ import koopa from "./images/koopa.png";
 import goomba from "./images/goomba.png";
 import shy from "./images/shy.png";
 import mario from "./images/mario.png";
-import gameboy from "./images/gameboy.jpg";
+import gameboy from "./images/gameboy.png";
 
 //Main App
 function App() {
